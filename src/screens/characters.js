@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { FlatList } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useTranslation } from 'react-i18next'
 import Avatar from '../components/avatar'
 import readFavorite from '../utils/readFavorite'
 import addToFavorite from '../utils/addToFavorite'
@@ -11,8 +12,9 @@ import removeFromFavorite from '../utils/removeFromFavorite'
 const Characters = ({ navigation }) => {
   const [characters, setCharacters] = useState([])
   const [offset, setOffset] = useState(0)
-
+  const { t, i18n } = useTranslation()
   useEffect(() => {
+    i18n.changeLanguage('fr')
     axios({
       method: 'GET',
       url: 'https://gateway.marvel.com:443/v1/public/characters?ts=1&limit=10&apikey=9ce6b8729ef7a22ab50bb52173ff58ae&hash=baaea02473141730fe086e02c2914c2f',
@@ -46,6 +48,7 @@ const Characters = ({ navigation }) => {
   return (
     <>
       <TextStyled>Characters</TextStyled>
+      <TextStyled>{t('menu.home')}</TextStyled>
       <Button
         onPress={() => navigation.navigate('HomeStack', { screen: 'settings' })}
       >

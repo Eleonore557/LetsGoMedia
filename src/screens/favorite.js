@@ -27,10 +27,15 @@ const Favorite = () => {
   return (
     <>
       {fav.map(f => (
-        <Text>{f.name}</Text>
+        <Container>
+          <Text>{f.name}</Text>
+        </Container>
       ))}
     </>
   )
 }
 
+const Container = styled.View`
+  background-color: red;
+`
 export default Favorite

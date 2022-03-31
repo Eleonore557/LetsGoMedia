@@ -2,16 +2,22 @@ import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StyleSheet, useColorScheme } from 'react-native'
 
+import { Provider } from 'react-redux'
 import { lightTheme, darkTheme } from './src/config/theme'
 import Routes from './src/config/routes'
+import { store } from './src/config/store'
+
+import './src/config/initTranslation'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <Routes />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <Routes />
+      </ThemeProvider>
+    </Provider>
   )
 }
 
