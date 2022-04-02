@@ -4,15 +4,20 @@ import axios from 'axios'
 import { FlatList } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import Avatar from '../components/avatar'
 import readFavorite from '../utils/readFavorite'
 import addToFavorite from '../utils/addToFavorite'
 import removeFromFavorite from '../utils/removeFromFavorite'
+import TodoRedux from '../components/todoRedux'
+import TrombiRedux from '../components/trombiRedux'
 
 const Characters = ({ navigation }) => {
   const [characters, setCharacters] = useState([])
   const [offset, setOffset] = useState(0)
   const { t, i18n } = useTranslation()
+  const state = useSelector(state => state)
+  console.log('🚀 ~ file: characters.js ~ line 18 ~ Characters ~ state', state)
   useEffect(() => {
     i18n.changeLanguage('fr')
     axios({
@@ -21,9 +26,6 @@ const Characters = ({ navigation }) => {
       params: {
         limit: 20,
         offset
-        // ts: 1,
-        // apikey: '51f5653d973d80fcbea3d50882ddaa93',
-        // hash: '711890d64d763846dd2c44750a224905'
       }
     })
       .then(response => {
@@ -48,6 +50,8 @@ const Characters = ({ navigation }) => {
   return (
     <>
       <TextStyled>Characters</TextStyled>
+      <TrombiRedux />
+      <TodoRedux />
       <TextStyled>{t('menu.home')}</TextStyled>
       <Button
         onPress={() => navigation.navigate('HomeStack', { screen: 'settings' })}
