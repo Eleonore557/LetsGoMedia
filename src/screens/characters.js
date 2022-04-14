@@ -49,7 +49,7 @@ const Characters = ({ navigation }) => {
 
   return (
     <>
-      <TextStyled>Characters</TextStyled>
+      {/* <TextStyled>Characters</TextStyled> */}
       <TrombiRedux />
       <TodoRedux />
       <TextStyled>{t('menu.home')}</TextStyled>
@@ -58,7 +58,7 @@ const Characters = ({ navigation }) => {
       >
         <TextStyled>To Home</TextStyled>
       </Button>
-      <FlatList
+      {/* <FlatList
         data={characters}
         keyExtractor={item => item.id}
         onEndReached={() => setOffset(offset + 20)}
@@ -81,7 +81,7 @@ const Characters = ({ navigation }) => {
             </Button>
           </Button>
         )}
-      />
+      /> */}
     </>
   )
 }

@@ -14,14 +14,14 @@ export const getSorcerer = offset => dispatch => {
   // })
   axios({
     method: 'GET',
-    url: 'https://gateway.marvel.com:443/v1/public/characters?ts=1&limit=10&apikey=9ce6b8729ef7a22ab50bb52173ff58ae&hash=baaea02473141730fe086e02c2914c2f',
-    params: {
-      limit: 20,
-      offset
-    }
+    url: 'https://letsgomedia.herokuapp.com/api/articles',
+    // params: {
+    //   limit: 20,
+    //   offset
+    // }
   })
     .then(response => {
-      dispatch(displayCharacters(response.data.data.results))
+      dispatch(displayCharacters(response.data.data))
     })
     .catch(error => {
       console.log(error)
