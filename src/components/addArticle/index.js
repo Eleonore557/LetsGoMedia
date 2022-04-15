@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, TextInput } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { getSorcerer } from '../../actions/postArticle'
@@ -10,6 +10,7 @@ import Avatar from '../avatar'
 import Date from '../date'
 
 const TrombiRedux = () => {
+  const characters = useSelector(state => state.poudlard.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -18,11 +19,13 @@ const TrombiRedux = () => {
 
   return (
     <FlatList
+    data={characters}
+
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <ViewCard>
              <TextInput
-          placeholder="Title"
+          placeholder='Title'
           />
             <Title>{item.attributes.Title}</Title>
             <Overview>Catégorie : {item.attributes.tag}</Overview>

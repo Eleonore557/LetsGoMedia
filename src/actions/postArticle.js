@@ -13,11 +13,19 @@ export const getSorcerer = offset => dispatch => {
   //   dispatch(displayCharacters(res.data))
   // })
   axios({
+    method: 'GET',
+    url: 'https://letsgomedia.herokuapp.com/api/articles'
+    // params: {
+    //   limit: 20,
+    //   offset
+    // }
+  })
+  axios({
     method: 'POST',
     url: 'https://letsgomedia.herokuapp.com/api/articles',
     data: {
       data: {
-        Title: 'Ynov',
+        Title: 'Ynovvvvv',
         Description: 'Description de larticle'
       }
     }
