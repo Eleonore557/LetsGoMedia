@@ -16,22 +16,7 @@ const TodoRedux = () => {
     dispatch(removeTodo(id))
   }
 
-  return (
-    <Container>
-      <TextInput onChangeText={text => setInput(text)} />
-      {todos.map(todo => (
-        <>
-          <Text>{todo.label}</Text>
-          <Touch onPress={() => remove(todo.id)}>
-            <Text>X</Text>
-          </Touch>
-        </>
-      ))}
-      <Touch onPress={toTodos}>
-        <Text>Ajout</Text>
-      </Touch>
-    </Container>
-  )
+  return null
 }
 
 const Touch = styled.TouchableOpacity``

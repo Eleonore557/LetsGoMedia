@@ -51,13 +51,6 @@ const Characters = ({ navigation }) => {
     <>
       {/* <TextStyled>Characters</TextStyled> */}
       <TrombiRedux />
-      <TodoRedux />
-      <TextStyled>{t('menu.home')}</TextStyled>
-      <Button
-        onPress={() => navigation.navigate('HomeStack', { screen: 'settings' })}
-      >
-        <TextStyled>To Home</TextStyled>
-      </Button>
       {/* <FlatList
         data={characters}
         keyExtractor={item => item.id}
