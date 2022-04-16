@@ -7,7 +7,7 @@ export const displayCharacters = payload => ({
   payload
 })
 
-export const getSorcerer = offset => dispatch => {
+export const getArticle = offset => dispatch => {
   // axios.get('https://hp-api.herokuapp.com/api/characters').then(res => {
   //   console.log(res.data)
   //   dispatch(displayCharacters(res.data))

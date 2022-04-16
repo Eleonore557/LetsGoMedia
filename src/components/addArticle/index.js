@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { FlatList, TextInput } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { getSorcerer } from '../../actions/postArticle'
+import { getArticle } from '../../actions/postArticle'
 import Title from '../title'
 import ViewCard from '../viewCard'
 import Overview from '../overview'
 import Avatar from '../avatar'
 import Date from '../date'
 
-const TrombiRedux = () => {
+const addArticle = () => {
   const characters = useSelector(state => state.poudlard.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSorcerer())
+    dispatch(getArticle())
   }, [])
 
   return (
@@ -44,4 +44,4 @@ const Text = styled.Text``
 
 const Component = styled.ScrollView``
 
-export default TrombiRedux
+export default addArticle
