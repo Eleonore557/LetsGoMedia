@@ -4,6 +4,7 @@ import CharactersStack from './charactersStack'
 import LoginStack from './loginStack'
 import Favorite from '../../screens/favorite'
 
+
 const Bottom = createBottomTabNavigator()
 
 const ProtectedStack = () => {

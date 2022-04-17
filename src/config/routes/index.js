@@ -6,6 +6,7 @@ import FlashMessage from 'react-native-flash-message'
 
 import LoginStack from './loginStack'
 import ProtectedStack from './protectedStack'
+import Login from '../../screens/login'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,8 +14,8 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* <Stack.Screen name='LoginStack' component={LoginStack} /> */}
         <Stack.Screen name='ProtectedStack' component={ProtectedStack} />
+        <Stack.Screen name='Login' component={Login} />
       </Stack.Navigator>
       <FlashMessage position='top' />
     </NavigationContainer>
