@@ -1,109 +1,50 @@
-import React, { useState, useEffect } from 'react'
-import { Text, SafeAreaView, View, FlatList, TextInput } from 'react-native'
-import styled from 'styled-components'
-import { useFocusEffect } from '@react-navigation/native'
-import asyncStorage from '@react-native-async-storage/async-storage'
-import axios from 'axios'
-import readFavorite from '../utils/readFavorite'
+import React, {useState} from 'react';
+import {StyleSheet, View, TouchableOpacity, Text, TextInput, Button} from 'react-native';
+import axios from 'axios';
+import {Picker} from '@react-native-picker/picker';
 
 const Favorite = () => {
- const [masterData, setmasterData] = useState([])
+  const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27'}])
+  const [title, setText] = useState('')
+  const [description, setDescription] = useState('')
+  const [Date_De_Publication, setDate_De_Publication] = useState('')
 
- const fetchArticle = () => {
-  axios({
-    method: 'GET',
-    url: 'https://letsgomedia.herokuapp.com/api/articles',
-  })
-    .then(response => {
-      setfilterdData([...masterData, ...response.data.data])
-      setmasterData([...masterData, ...response.data.data])
+  const addToTodoList = () => {
+    setTodos([...todos, { Title: title, Description: description,  date_de_publication: Date_De_Publication}])
+    setText('')
+    setDescription('')
+    setDate_De_Publication('')
+
+    axios
+    .post('https://letsgomedia.herokuapp.com/api/articles', {
+        data:{      
+          Title: title,
+          Description: description,
+          date_de_publication: Date_De_Publication,
+        }
     })
-    .catch(error => {
-      console.log(error)
+    .then(function (response) {
+      // handle success
+      alert(JSON.stringify(response.data));
     })
-  }
-
- const checkToken = async () => {
-   const token = await asyncStorage.getItem('token') 
-   console.log("🚀 ~ file: favorite.js ~ line 26 ~ checkToken ~ token", token)
- }
-
- useEffect(() => {
-  fetchArticle()
-   return () => {
-
-   }
- }, [])
-  const searchFilter = (text) => {
-    if (text) {
-      const newData = masterData.filter((item) => {
-        const itemData = item.attributes.Title ? item.attributes.Title.toUpperCase() : ''.toUpperCase()
-        const textData = text.toUpperCase()
-        return itemData.indexOf(textData) > -1
-      })
-      setfilterdData(newData)
-      setSearch(text)
-    } else {
-      setfilterdData(masterData)
-      setSearch(text)
-    }
+    .catch(function (error) {
+      // handle error
+      alert(error.message);
+    });
+    
   }
  
-  const [search, setSearch] = useState('')
-  const [filterdData, setfilterdData] = useState([])
-
-  const [fav, setFav] = useState([])
-
-  const addFavToState = async () => {
-    const allFav = await readFavorite()
-    setFav(allFav)
-  }
-
-  useFocusEffect(() => {
-    addFavToState()
-  })
-
-  useEffect(() => {
-    addFavToState()
-  }, [])
-
-  useEffect(() => {
-    console.log(fav)
-  }, [fav])
-
-  const ItemView = ({item}) => {
-    return(
-      <Text>{item.id}{'. '}{item.attributes.Title.toUpperCase()}</Text>
-    )
-  }
-
-   const ItemSeparatorView = () => {
-     return (
-       <View style={{height: 0.5, width: '100%', backgroundColor: '#c8c8c'}}/>
-     )
-   }
-
   return (
     <>
-    <SafeAreaView>
-      <View>
-        <TextInput value={search} placeholder="search Here"
-        underlineColorAndroid="transparent" onChangeText={(text) => searchFilter(text)}/>
-        <FlatList data={filterdData} keyExtractor={(item, index) => index.toString()}
-        itemSeparatorComponent={ItemSeparatorView}
-        renderItem={ItemView}/>
+    <View>
+      <Text>Insérer vos articles ici !</Text>
+      <TextInput value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre"/>
+      <TextInput value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
+      <TextInput value={Date_De_Publication} onChangeText={textValue => setDate_De_Publication(textValue)} placeholder="Date de Publication - format aa-mm-jj"/>
       </View>
-    </SafeAreaView>
-      {fav.map(f => (
-        <Container>
-          <Text>{f.name}</Text>
-        </Container>
-      ))}
-    </>
-  )
-}
+      <Button title='Envoyer' onPress={addToTodoList} />
+      </>
+  );
+};
 
-const Container = styled.View`
-  background-color: red;
-`
-export default Favorite
+export default Favorite;
