@@ -8,17 +8,9 @@ export const displayCharacters = payload => ({
 })
 
 export const getSorcerer = offset => dispatch => {
-  // axios.get('https://hp-api.herokuapp.com/api/characters').then(res => {
-  //   console.log(res.data)
-  //   dispatch(displayCharacters(res.data))
-  // })
   axios({
     method: 'GET',
-    url: 'https://letsgomedia.herokuapp.com/api/articles',
-    // params: {
-    //   limit: 20,
-    //   offset
-    // }
+    url: 'https://letsgomedia.herokuapp.com/api/articles'
   })
     .then(response => {
       dispatch(displayCharacters(response.data.data))

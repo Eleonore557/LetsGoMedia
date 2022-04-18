@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const readFavorite = async () => {
+const readRedaction = async () => {
   try {
-    const item = await AsyncStorage.getItem('favorite')
+    const item = await AsyncStorage.getItem('Redaction')
 
     return item !== null ? JSON.parse(item) : []
   } catch (e) {}
 }
 
-export default readFavorite
+export default readRedaction

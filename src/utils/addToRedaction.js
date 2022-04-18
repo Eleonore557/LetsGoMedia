@@ -1,18 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { showMessage } from 'react-native-flash-message'
-import readFavorite from './readFavorite'
+import readRedaction from './readRedaction'
 
-const addToFavorite = async item => {
-  const formerFavorite = await readFavorite()
+const addToRedaction = async item => {
+  const formerRedaction = await readRedaction()
 
-  const arrayOfFavorite = formerFavorite || []
+  const arrayOfRedaction = formerRedaction || []
 
   try {
     const jsonValue = JSON.stringify([
-      ...arrayOfFavorite,
+      ...arrayOfRedaction,
       { name: item.name, id: item.id }
     ])
-    await AsyncStorage.setItem('favorite', jsonValue)
+    await AsyncStorage.setItem('Redaction', jsonValue)
     showMessage({
       message: `${item.name} à bien été ajouté aux favoris`,
       type: 'success'
@@ -26,4 +26,4 @@ const addToFavorite = async item => {
   }
 }
 
-export default addToFavorite
+export default addToRedaction

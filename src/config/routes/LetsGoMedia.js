@@ -5,7 +5,7 @@ import Details from '../../screens/details'
 
 const Stack = createNativeStackNavigator()
 
-const CharactersStack = () => {
+const LetsGoMedia = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Characters' component={Characters} />
@@ -14,4 +14,4 @@ const CharactersStack = () => {
   )
 }
 
-export default CharactersStack
+export default LetsGoMedia

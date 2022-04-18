@@ -3,7 +3,7 @@ import {StyleSheet, View, TouchableOpacity, Text, TextInput, Button} from 'react
 import axios from 'axios';
 import {Picker} from '@react-native-picker/picker';
 
-const Favorite = () => {
+const Redaction = () => {
   const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27'}])
   const [title, setText] = useState('')
   const [description, setDescription] = useState('')
@@ -47,4 +47,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default Redaction;

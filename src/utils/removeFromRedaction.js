@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { showMessage } from 'react-native-flash-message'
-import readFavorite from './readFavorite'
+import readRedaction from './readRedaction'
 
-const removeFromFavorite = async item => {
-  const formerFavorite = await readFavorite()
-  const filteredFavorite = formerFavorite.filter(fav => fav.id !== item.id)
+const removeFromRedaction = async item => {
+  const formerRedaction = await readRedaction()
+  const filteredRedaction = formerRedaction.filter(fav => fav.id !== item.id)
   try {
-    const jsonValue = JSON.stringify(filteredFavorite)
-    await AsyncStorage.setItem('favorite', jsonValue)
+    const jsonValue = JSON.stringify(filteredRedaction)
+    await AsyncStorage.setItem('Redaction', jsonValue)
     showMessage({
       message: `${item.name} à bien été supprimé des favoris`,
       type: 'info'
@@ -21,4 +21,4 @@ const removeFromFavorite = async item => {
   }
 }
 
-export default removeFromFavorite
+export default removeFromRedaction

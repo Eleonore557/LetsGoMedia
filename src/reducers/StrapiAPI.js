@@ -1,4 +1,4 @@
-import { DISPLAY_CHARACTERS } from '../actions/poudlard'
+import { DISPLAY_CHARACTERS } from '../actions/StrapiAPI'
 
 const initialState = {
   characters: []

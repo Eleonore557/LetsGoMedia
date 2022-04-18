@@ -1,8 +1,8 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import CharactersStack from './charactersStack'
+import LetsGoMedia from './LetsGoMedia'
 import LoginStack from './loginStack'
-import Favorite from '../../screens/favorite'
+import Redaction from '../../screens/redaction'
 
 
 const Bottom = createBottomTabNavigator()
@@ -10,8 +10,8 @@ const Bottom = createBottomTabNavigator()
 const ProtectedStack = () => {
   return (
     <Bottom.Navigator>
-      <Bottom.Screen name='CharactersStack' component={CharactersStack} />
-      <Bottom.Screen name='Favorite' component={Favorite} />
+      <Bottom.Screen name='LetsGoMedia' component={LetsGoMedia} />
+      <Bottom.Screen name='Redaction' component={Redaction} />
     </Bottom.Navigator>
   )
 }

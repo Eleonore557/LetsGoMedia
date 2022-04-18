@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { getSorcerer } from '../../actions/poudlard'
+import { getSorcerer } from '../../actions/StrapiAPI'
 
 const TrombiRedux = () => {
-  const characters = useSelector(state => state.poudlard.characters)
+  const characters = useSelector(state => state.StrapiAPI.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
