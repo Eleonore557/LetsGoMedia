@@ -1,19 +1,19 @@
 import axios from 'axios'
 
-export const DISPLAY_CHARACTERS = 'DISPLAY_CHARACTERS'
+export const DISPLAY_ARTICLES = 'DISPLAY_ARTICLES'
 
-export const displayCharacters = payload => ({
-  type: DISPLAY_CHARACTERS,
+export const displayArticles = payload => ({
+  type: DISPLAY_ARTICLES,
   payload
 })
 
-export const getSorcerer = offset => dispatch => {
+export const getArticle = offset => dispatch => {
   axios({
     method: 'GET',
     url: 'https://letsgomedia.herokuapp.com/api/articles'
   })
     .then(response => {
-      dispatch(displayCharacters(response.data.data))
+      dispatch(displayArticles(response.data.data))
     })
     .catch(error => {
       console.log(error)

@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {StyleSheet, View, TouchableOpacity, Text, TextInput, Button} from 'react-native';
 import axios from 'axios';
 import {Picker} from '@react-native-picker/picker';
+import Title from '../components/title'
+import Overview from '../components/overview';
+import Search from '../components/search';
 
 const Redaction = () => {
   const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27'}])
@@ -25,11 +28,11 @@ const Redaction = () => {
     })
     .then(function (response) {
       // handle success
-      alert(JSON.stringify(response.data));
+      alert("Votre article a bien été envoyé !");
     })
     .catch(function (error) {
       // handle error
-      alert(error.message);
+      alert("Zemmour Président : Réécrivez votre message.", error.message);
     });
     
   }
@@ -37,10 +40,10 @@ const Redaction = () => {
   return (
     <>
     <View>
-      <Text>Insérer vos articles ici !</Text>
-      <TextInput value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre"/>
-      <TextInput value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
-      <TextInput value={Date_De_Publication} onChangeText={textValue => setDate_De_Publication(textValue)} placeholder="Date de Publication - format aa-mm-jj"/>
+      <Title>Insérer vos articles ici !</Title>
+      <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre"/>
+      <Search value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
+      <Search value={Date_De_Publication} onChangeText={textValue => setDate_De_Publication(textValue)} placeholder="Date de Publication (aaaa-mm-jj)"/>
       </View>
       <Button title='Envoyer' onPress={addToTodoList} />
       </>
