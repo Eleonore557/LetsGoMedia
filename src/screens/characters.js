@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Text, View, Button, TextInput, FlatList, SafeAreaView, TouchableOpacity, StyleSheet} from 'react-native'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSorcerer } from '../actions/poudlard'
+import { getArticles } from '../actions/articles'
 import axios from 'axios'
 
 const listTab = [
@@ -10,10 +10,10 @@ const listTab = [
   status: 'All'
 },
 {
-  status: 'test'
+  status: 'Musique'
 },
 {
-  status: 'Titre'
+  status: 'Politique'
 },
 ]
 

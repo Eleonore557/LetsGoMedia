@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { getSorcerer } from '../../actions/poudlard'
+import { getArticles } from '../../actions/articles'
 
 const TrombiRedux = () => {
-  const characters = useSelector(state => state.poudlard.characters)
+  const articles = useSelector(state => state.articles.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSorcerer())
+    dispatch(getArticles())
   }, [])
 
   return (
     <FlatList
-        data={characters}
+        data={article}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <>
@@ -27,10 +27,5 @@ const TrombiRedux = () => {
       /> 
   )
 }
-
-const TouchableOpacity = styled.TouchableOpacity``
-const Text = styled.Text``
-
-const Component = styled.ScrollView``
 
 export default TrombiRedux

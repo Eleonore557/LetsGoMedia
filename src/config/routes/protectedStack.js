@@ -1,7 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import CharactersStack from './charactersStack'
-import LoginStack from './loginStack'
 import Favorite from '../../screens/favorite'
 
 

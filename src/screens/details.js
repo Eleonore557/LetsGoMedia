@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
-import Avatar from '../components/avatar'
 
 const Details = ({ route }) => {
   const [character, setCharacter] = useState({})
@@ -32,11 +31,6 @@ const Details = ({ route }) => {
 
   return (
     <Container>
-      <Avatar
-        urlImage={`https:${character.thumbnail?.path.split(':')[1]}.${
-          character.thumbnail?.extension
-        }`}
-      />
       <Text>{character.name}</Text>
       <Text>{character.description}</Text>
     </Container>
