@@ -5,6 +5,7 @@ import {Picker} from '@react-native-picker/picker';
 import Title from '../components/title'
 import Overview from '../components/overview';
 import Search from '../components/search';
+import SearchLong from '../components/searchLong';
 
 const Redaction = () => {
   const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27'}])
@@ -42,7 +43,8 @@ const Redaction = () => {
     <View>
       <Title>Insérer vos articles ici !</Title>
       <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre"/>
-      <Search value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
+      <Search multiline={true}
+    numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
       <Search value={Date_De_Publication} onChangeText={textValue => setDate_De_Publication(textValue)} placeholder="Date de Publication (aaaa-mm-jj)"/>
       </View>
       <Button title='Envoyer' onPress={addToTodoList} />
