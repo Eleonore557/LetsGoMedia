@@ -5,7 +5,10 @@ import {Picker} from '@react-native-picker/picker';
 import Title from '../components/title'
 import Overview from '../components/overview';
 import Search from '../components/search';
-import SearchLong from '../components/searchLong';
+import DatePicker from 'react-native-date-picker';
+
+
+
 
 const Redaction = () => {
   const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27'}])
@@ -13,15 +16,19 @@ const Redaction = () => {
   const [description, setDescription] = useState('')
   const [Date_De_Publication, setDate_De_Publication] = useState('')
 
+
+
   const addToTodoList = () => {
     setTodos([...todos, { Title: title, Description: description,  date_de_publication: Date_De_Publication}])
     setText('')
     setDescription('')
     setDate_De_Publication('')
 
+
+
     axios
     .post('https://letsgomedia.herokuapp.com/api/articles', {
-        data:{      
+        data:{
           Title: title,
           Description: description,
           date_de_publication: Date_De_Publication,
@@ -33,10 +40,12 @@ const Redaction = () => {
     })
     .catch(function (error) {
       // handle error
-      alert("Zemmour Président : Réécrivez votre message.", error.message);
+      alert("Réécrivez votre message.", error.message);
     });
     
   }
+
+  const [date, setDate] = useState(new Date())
  
   return (
     <>
@@ -45,7 +54,7 @@ const Redaction = () => {
       <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre"/>
       <Search multiline={true}
     numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description"/>
-      <Search value={Date_De_Publication} onChangeText={textValue => setDate_De_Publication(textValue)} placeholder="Date de Publication (aaaa-mm-jj)"/>
+<DatePicker value={Date_De_Publication} date={date} mode={'date'} onDateChange={textValue => setDate_De_Publication(textValue)}/>
       </View>
       <Button title='Envoyer' onPress={addToTodoList} />
       </>
