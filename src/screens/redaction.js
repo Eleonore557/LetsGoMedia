@@ -6,6 +6,7 @@ import Title from '../components/title'
 import Overview from '../components/overview';
 import Search from '../components/search';
 import DatePicker from 'react-native-date-picker';
+import ViewTag from '../components/view-tag';
 
 
 
@@ -54,16 +55,18 @@ const Redaction = () => {
         <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre" />
         <Search multiline={true} numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description" />
         <DatePicker value={Date_De_Publication} date={date} mode={'date'} onDateChange={textValue => setDate_De_Publication(textValue)} />
-        <Picker
-          selectedValue={Tag}
-          style={{ height: 50, width: 150 }}
-          onValueChange={(itemValue, itemIndex) => setTag(itemValue)}
-        >
-        <Picker.Item label="santé" value="santé" />
-        <Picker.Item label="politique" value="politique" />
-        <Picker.Item label="musique" value="musique" />
-        <Picker.Item label="sport" value="sport" />
+        <ViewTag>
+          <Picker
+            selectedValue={Tag}
+            style={{ height: 50, width: 150 }}
+            onValueChange={(itemValue, itemIndex) => setTag(itemValue)}
+          >
+          <Picker.Item label="santé" value="santé" />
+          <Picker.Item label="politique" value="politique" />
+          <Picker.Item label="musique" value="musique" />
+          <Picker.Item label="sport" value="sport" />
       </Picker>
+      </ViewTag>
       </View>
       <Button title='Envoyer' onPress={addToTodoList} />
     </>

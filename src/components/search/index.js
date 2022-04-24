@@ -9,7 +9,7 @@ const Search = styled.TextInput`
   width: 380px;
   background-color: #FFFCDA;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 `
 
 export default Search

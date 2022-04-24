@@ -136,7 +136,7 @@ const [dataList, setDataList] = useState(todos)
 const SafeAreaViewFilter = styled.SafeAreaView`
     flex: 1;
     paddingHorizontal: 10px;
-    justifyContent: center
+    justifyContent: center;
 `
 const ViewListTab = styled.View`
     flexDirection: row;
