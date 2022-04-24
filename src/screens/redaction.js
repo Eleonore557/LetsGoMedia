@@ -31,6 +31,7 @@ const Redaction = () => {
           Title: title,
           Description: description,
           date_de_publication: Date_De_Publication,
+          tag: Tag,
         }
       })
       .then(function (response) {
