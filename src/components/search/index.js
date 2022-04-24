@@ -5,7 +5,10 @@ const Search = styled.TextInput`
   padding: 15px;
   font-size: 20px;
   margin-bottom: 10px;
-  border: 5px solid blue;
+  border: 1px solid #FFF681;
+  border-radius: 2px;
+  width: 380px;
+  background-color: #FFFCDA;
 `
 
 export default Search
