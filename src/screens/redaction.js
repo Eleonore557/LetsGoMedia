@@ -9,17 +9,16 @@ import DatePicker from 'react-native-date-picker';
 
 
 
-
 const Redaction = () => {
   const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27' }])
   const [title, setText] = useState('')
   const [description, setDescription] = useState('')
   const [Date_De_Publication, setDate_De_Publication] = useState('')
-
+  const [Tag, setTag] = useState('')
 
 
   const addToTodoList = () => {
-    setTodos([...todos, { Title: title, Description: description, date_de_publication: Date_De_Publication }])
+    setTodos([...todos, { Title: title, Description: description, date_de_publication: Date_De_Publication, tag: Tag }])
     setText('')
     setDescription('')
     setDate_De_Publication('')
@@ -54,6 +53,16 @@ const Redaction = () => {
         <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre" />
         <Search multiline={true} numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description" />
         <DatePicker value={Date_De_Publication} date={date} mode={'date'} onDateChange={textValue => setDate_De_Publication(textValue)} />
+        <Picker
+          selectedValue={Tag}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => setTag(itemValue)}
+        >
+        <Picker.Item label="santé" value="santé" />
+        <Picker.Item label="politique" value="politique" />
+        <Picker.Item label="musique" value="musique" />
+        <Picker.Item label="sport" value="sport" />
+      </Picker>
       </View>
       <Button title='Envoyer' onPress={addToTodoList} />
     </>

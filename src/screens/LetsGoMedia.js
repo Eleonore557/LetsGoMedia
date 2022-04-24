@@ -12,21 +12,29 @@ import Article from '../components/article';
 import Search from '../components/search';
 
 const listTab = [
-  {
-  status: 'All'
-},
-{
-  status: 'musique'
-},
-{
-  status: 'politique'
-},
-]
+                  {
+                    status: 'All'
+                  },
+                  {
+                    status: 'musique'
+                  },
+                  {
+                    status: 'politique'
+                  },
+                  {
+                    status: 'santé'
+                  },
+                  {
+                    status: 'sport'
+                  },
+                ]
 
 const LetsGoMedia = () => {
   const [todos, setTodos] = useState([])
   const [search, setSearch] = useState('')
   const [filterdData, setfilterdData] = useState([])
+  const [loading, setLoading] = useState(true)
+
 
   const searchFilter = (text) => {
     if (text) {
@@ -43,7 +51,7 @@ const LetsGoMedia = () => {
     }
   }
 
-  useEffect(() => {
+  const getArticles = () => {
     axios({
       method: 'GET',
       url: 'https://letsgomedia.herokuapp.com/api/articles',
@@ -51,11 +59,17 @@ const LetsGoMedia = () => {
       .then(response => {
         setDataList([...todos, ...response.data.data])
         setTodos([...todos, ...response.data.data])
+        setLoading(false)
       })
       .catch(error => {
         console.log(error)
       })
+  }
+
+  useEffect(() => {
+    getArticles()
   }, [])
+
   const [status, setStatus] = useState('All')
   const setStatusFilter = status => {
     if (status !== 'All'){
@@ -110,7 +124,9 @@ const [dataList, setDataList] = useState(todos)
       <FlatList 
         data={dataList} keyExtractor={(e, i) => i.toString()}
         renderItem={renderItem}
-        ItemSeparatorComponent={separator}/>
+        ItemSeparatorComponent={separator}
+        onRefresh={()=>getArticles()}
+        refreshing={loading}/>
      
     </SafeAreaViewFilter>
   </>
