@@ -12,6 +12,8 @@ target 'ynovnative2022' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'ynovnative2022Tests' do
     inherit! :complete
     # Pods for testing

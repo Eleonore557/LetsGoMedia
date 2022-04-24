@@ -128,6 +128,10 @@ const ViewListTab = styled.View`
     marginBottom: 20px;
 ` 
 
+const BtnTab = styled.Button`
+   color:red,
+   padding: 10,` 
+
 const styles = StyleSheet.create({
   btnTab: {
     flexDirection: 'row',
