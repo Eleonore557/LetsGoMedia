@@ -14,10 +14,10 @@ import Description from '../components/description';
 
 
 const Redaction = () => {
-  const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: '2022-04-27' }])
+  const [todos, setTodos] = useState([{ Title: 'coco', Description: 'description', Date_De_Publication: new Date() }])
   const [title, setText] = useState('')
   const [description, setDescription] = useState('')
-  const [Date_De_Publication, setDate_De_Publication] = useState('')
+  const [Date_De_Publication, setDate_De_Publication] = useState(new Date())
   const [Tag, setTag] = useState('')
 
 
@@ -25,9 +25,7 @@ const Redaction = () => {
     setTodos([...todos, { Title: title, Description: description, date_de_publication: Date_De_Publication, tag: Tag }])
     setText('')
     setDescription('')
-    setDate_De_Publication('')
-
-
+    setDate_De_Publication(new Date())
 
     axios
       .post('https://letsgomedia.herokuapp.com/api/articles', {
@@ -49,7 +47,6 @@ const Redaction = () => {
 
   }
 
-  const [date, setDate] = useState(new Date())
 
   return (
     <>
@@ -58,7 +55,14 @@ const Redaction = () => {
         <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre" />
         <Description multiline={true} numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description" />
         <ViewDate>
-          <DatePicker value={Date_De_Publication} date={date} mode={'date'} onDateChange={textValue => setDate_De_Publication(textValue)} />
+        <DatePicker
+          date={Date_De_Publication}
+          mode="date"
+          format="DD/MM/YYYY"
+          onDateChange={(Date_De_Publication) => {
+            setDate_De_Publication(Date_De_Publication)
+          }}
+        />
         </ViewDate>
         <ViewTag>
           <Picker

@@ -57,8 +57,8 @@ const LetsGoMedia = () => {
       url: 'https://letsgomedia.herokuapp.com/api/articles',
     })
       .then(response => {
-        setDataList([...todos, ...response.data.data])
-        setTodos([...todos, ...response.data.data])
+        setDataList(response.data.data)
+        setTodos(response.data.data)
         setLoading(false)
       })
       .catch(error => {
