@@ -8,6 +8,8 @@ import Search from '../components/search';
 import DatePicker from 'react-native-date-picker';
 import ViewTag from '../components/view-tag';
 import ViewDate from '../components/view-date';
+import Description from '../components/description';
+
 
 
 
@@ -54,7 +56,7 @@ const Redaction = () => {
       <View>
         <Title>Insérer vos articles ici !</Title>
         <Search value={title} onChangeText={textValue => setText(textValue)} placeholder="Titre" />
-        <Search multiline={true} numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description" />
+        <Description multiline={true} numberOfLines={4} value={description} onChangeText={textValue => setDescription(textValue)} placeholder="Description" />
         <ViewDate>
           <DatePicker value={Date_De_Publication} date={date} mode={'date'} onDateChange={textValue => setDate_De_Publication(textValue)} />
         </ViewDate>
